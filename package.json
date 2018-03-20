@@ -1,0 +1,35 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "Classic tic-tac-toe game",
+  "main": "game.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "npm run webpack && node ./dist/bundle.js",
+    "dev": "nodemon ./dev/bundle.js",
+    "webpack": "webpack --config webpack.prod.config.js",
+    "webpack:dev": "webpack --config webpack.dev.config.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewdking/tic-tac-toe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matthewdking/tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/matthewdking/tic-tac-toe#readme",
+  "devDependencies": {
+    "nodemon": "^1.17.2"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.11"
+  }
+}
