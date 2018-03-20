@@ -1,4 +1,4 @@
-patterns_1 = [
+const patterns_1 = [
   [/ OO....../, 0],
   [/O..O.. ../, 6],
   [/......OO /, 8],
@@ -20,7 +20,7 @@ patterns_1 = [
   [/.O..O.. ./, 7],
   [/...OO .../, 5],
 ];
-patterns_2 = [
+const patterns_2 = [
   [/  X . X  /, 1],
   [/ XX....../, 0],
   [/X..X.. ../, 6],
@@ -55,7 +55,7 @@ patterns_2 = [
   [/..X..  X /, 8],
   [/X  ..X.. /, 2],
 ];
-patterns_3 = [
+const patterns_3 = [
   [/OOO....../, 'O'],
   [/...OOO.../, 'O'],
   [/......OOO/, 'O'],
@@ -73,14 +73,14 @@ patterns_3 = [
   [/X...X...X/, 'X'],
   [/..X.X.X../, 'X'],
 ];
-board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
-X = 'X';
-O = 'O';
-players = [X, O];
-curr_turn = X;
+const board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+let X = 'X';
+let O = 'O';
+let players = [X, O];
+let curr_turn = X;
 
-comp = function() {
-  x = get_pattern_1_move();
+const comp = function() {
+  let x = get_pattern_1_move();
   if (x == -1) {
     x = get_pattern_2_move();
     if (x == -1) {
@@ -89,7 +89,8 @@ comp = function() {
   }
   move(x, O);
 };
-move = function(pos, x) {
+
+const move = function(pos, x) {
   if (x != curr_turn) {
     return false;
   }
@@ -100,7 +101,8 @@ move = function(pos, x) {
   }
   return false;
 };
-board_display = function() {
+
+const board_display = function() {
   return (
     ' ' +
     board[0] +
@@ -130,11 +132,13 @@ board_display = function() {
     board[8]
   );
 };
-show = function() {
+
+const show = function() {
   console.log(board_display());
 };
-board_filled = function() {
-  x = get_move();
+
+const board_filled = function() {
+  let x = get_move();
   if (x == -1) {
     show();
     console.log('Game over');
@@ -142,11 +146,12 @@ board_filled = function() {
   }
   return false;
 };
-winner = function() {
-  board_string = board.join('');
-  the_winner = null;
-  for (i = 0; i < patterns_3.length; i++) {
-    array = board_string.match(patterns_3[i][0]);
+
+const winner = function() {
+  let board_string = board.join('');
+  let the_winner = null;
+  for (let i = 0; i < patterns_3.length; i++) {
+    let array = board_string.match(patterns_3[i][0]);
     if (array) {
       the_winner = patterns_3[i][1];
     }
@@ -158,36 +163,41 @@ winner = function() {
   }
   return false;
 };
-get_pattern_1_move = function() {
-  board_string = board.join('');
-  for (i = 0; i < patterns_1.length; i++) {
-    array = board_string.match(patterns_1[i][0]);
+
+const get_pattern_1_move = function() {
+  let board_string = board.join('');
+  for (let i = 0; i < patterns_1.length; i++) {
+    let array = board_string.match(patterns_1[i][0]);
     if (array) {
       return patterns_1[i][1];
     }
   }
   return -1;
 };
-get_pattern_2_move = function() {
-  board_string = board.join('');
-  for (i = 0; i < patterns_2.length; i++) {
-    array = board_string.match(patterns_2[i][0]);
+
+const get_pattern_2_move = function() {
+  let board_string = board.join('');
+  for (let i = 0; i < patterns_2.length; i++) {
+    let array = board_string.match(patterns_2[i][0]);
     if (array) {
       return patterns_2[i][1];
     }
   }
   return -1;
 };
-get_move = function() {
+
+const get_move = function() {
   if (board[4] == ' ') {
     return 4;
   }
   return board.indexOf(' ');
 };
-exit = function() {
+
+const exit = function() {
   process.exit();
 };
-play = function() {
+
+const play = function() {
   show();
   console.log('Enter [0-8]:');
   process.openStdin().on('data', function(res) {
