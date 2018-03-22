@@ -3,7 +3,7 @@ const path = require('path');
 const config = {
   target: 'node',
   mode: 'development',
-  entry: './game.js',
+  entry: './index.js',
   module: {
     rules: [
       {
